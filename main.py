@@ -69,9 +69,9 @@ with open("UA.geojson", 'r+', encoding='utf-8') as read_file:
 ua_map = fl.Map(location=[48.6992149, 31.2844733], zoom_start=7)
 fg = fl.FeatureGroup(name='Ukraine COVID-19 map')
 
-key_max = max([int(x) for x in data.values()])
-key_min = min([int(x) for x in data.values()])
-colormap = cm.linear.Reds_09.scale(key_min, key_max)
+infected_max = max([int(x) for x in data.values()])
+infected_min = min([int(x) for x in data.values()])
+colormap = cm.linear.Reds_09.scale(infected_min, infected_max)
 
 fg.add_child(fl.GeoJson(data=open('UA.geojson', 'r').read(),
                         popup=fl.GeoJsonPopup(fields=['name', 'infected'], aliases=['Region', 'Infected']),
